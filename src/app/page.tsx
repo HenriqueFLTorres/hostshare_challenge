@@ -1,3 +1,4 @@
+import FiltersList from '@/components/FiltersList';
 import Filter from '@/icons/Filter';
 import Globe from '@/icons/Globe';
 import Hamburguer from '@/icons/Hamburguer';
@@ -72,6 +73,8 @@ export default function Home() {
           </button>
         </div>
       </header>
+
+      <FiltersList />
     </main>
   );
 }
