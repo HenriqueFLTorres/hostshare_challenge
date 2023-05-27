@@ -3,9 +3,21 @@ import Arrow from '@/icons/Arrow';
 import Filter from '@/icons/Filter';
 import { cn } from '@/utils/classNames';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { cache, use, useEffect, useRef, useState } from 'react';
+
+const getData = cache(async () => {
+  const data = await fetch(
+    'https://file.notion.so/f/s/24643894-e5c3-4c40-974a-52594f581e03/listings.json?id=f795dab6-14d4-48a9-9567-c72151d311a2&table=block&spaceId=f2ea7328-64a4-4f18-bacc-df6c9ac3d888&expirationTimestamp=1685308258589&signature=Uwu9OZixsV6q4lIkM4RGdWT86gzpBQodVmzhbPzzAMM&downloadName=listings.json'
+  );
+  const notionApi = await data.json();
+
+  return notionApi?.categories;
+});
 
 export default function FiltersList() {
+  const categories = use(getData());
+  const [category, setCategory] = useState<string>(categories[0].type);
+
   const [{ showLeft, showRight }, setShowScroll] = useState({
     showLeft: false,
     showRight: true,
@@ -71,26 +83,41 @@ export default function FiltersList() {
           className='flex relative w-full gap-4 grow lg:gap-8 overflow-auto md:overflow-hidden px-4'
           ref={filtersElementRef}
         >
-          {filtersCategories.map((category) => {
-            const name = category.replace(/\_/g, ' ');
-
-            return (
+          {categories.map(
+            ({
+              id,
+              type,
+              title,
+            }: {
+              id: string;
+              type: string;
+              title: string;
+            }) => (
               <button
-                key={category}
-                className='flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3'
+                key={id}
+                className={cn(
+                  'flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3',
+                  { ['opacity-100']: category === type }
+                )}
+                onClick={() => setCategory(type)}
               >
                 <Image
-                  src={`/filters/${category}.jpeg`}
-                  alt={name}
+                  src={`/filters/${type}.jpeg`}
+                  alt={title}
                   width={24}
                   height={24}
                 />
-                <p className="text-xs capitalize after:hidden group-hover:after:block after:absolute relative flex flex-col after:translate-y-6 after:content-[''] after:w-full after:bg-neutral-300 after:h-[2px] text-black shrink-0 font-semibold">
-                  {name}
+                <p
+                  className={cn(
+                    "text-xs capitalize after:hidden group-hover:after:block after:absolute relative flex flex-col after:translate-y-6 after:content-[''] after:w-full after:bg-neutral-300 after:h-[2px] text-black shrink-0 font-semibold after:transition-colors",
+                    { ['after:block after:bg-black']: category === type }
+                  )}
+                >
+                  {title}
                 </p>
               </button>
-            );
-          })}
+            )
+          )}
         </div>
 
         <div
@@ -128,65 +155,3 @@ export default function FiltersList() {
     </section>
   );
 }
-
-const filtersCategories = [
-  'cabins',
-  'rooms',
-  'beachfront',
-  'amazing_views',
-  'windmills',
-  'tiny_homes',
-  'bed_&_breakfasts',
-  'treehouses',
-  'farms',
-  'vineyards',
-  'national_parks',
-  'OMG!',
-  'islands',
-  'amazing_pools',
-  'design',
-  'trending',
-  'tropical',
-  'a-frames',
-  'containers',
-  'mansions',
-  'castles',
-  'boats',
-  'skiing',
-  'lakefront',
-  'domes',
-  'iconic_cities',
-  'lake',
-  'play',
-  'surfing',
-  'new',
-  'luxe',
-  'earth_homes',
-  'desert',
-  'grand_pianos',
-  'creative_spaces',
-  "chef's_kitchens",
-  'caves',
-  'houseboats',
-  'ski_in_out',
-  'off_the_grid',
-  'artic',
-  'barns',
-  'top_of_the_world',
-  'trulli',
-  'adapted',
-  'golfing',
-  'historical_homes',
-  'ryokans',
-  'casas_particulares',
-  'yurts',
-  'cycladic_homes',
-  'riads',
-  'minsus',
-  'hanoks',
-  "shepherd's_huts",
-  'towers',
-  'dammusi',
-  'campers',
-  'beach',
-];
