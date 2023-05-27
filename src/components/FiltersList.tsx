@@ -1,7 +1,9 @@
 'use client';
+import { PropertyFilterAtom } from '@/atoms/PropertyFilter';
 import Arrow from '@/icons/Arrow';
 import Filter from '@/icons/Filter';
 import { cn } from '@/utils/classNames';
+import { useAtom } from 'jotai';
 import Image from 'next/image';
 import { cache, use, useEffect, useRef, useState } from 'react';
 
@@ -16,7 +18,7 @@ const getData = cache(async () => {
 
 export default function FiltersList() {
   const categories = use(getData());
-  const [category, setCategory] = useState<string>(categories[0].type);
+  const [{ category }, setFilter] = useAtom(PropertyFilterAtom);
 
   const [{ showLeft, showRight }, setShowScroll] = useState({
     showLeft: false,
@@ -99,7 +101,7 @@ export default function FiltersList() {
                   'flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3',
                   { ['opacity-100']: category === type }
                 )}
-                onClick={() => setCategory(type)}
+                onClick={() => setFilter(prev => ({ ...prev, category: type }))}
               >
                 <Image
                   src={`/filters/${type}.jpeg`}
