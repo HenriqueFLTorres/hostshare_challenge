@@ -38,11 +38,11 @@ export default function FiltersList() {
   }, []);
 
   return (
-    <section className='flex w-full items-center relative px-10 lg:px-20'>
+    <section className='flex shadow-md shadow-black/5 md:shadow-none w-full items-center relative md:px-10 lg:px-20'>
       <div className='flex grow overflow-hidden relative justify-between items-center'>
         <div
           className={cn(
-            'h-full absolute pointer-events-none pl-4 pr-12 z-10 bg-gradient-to-r opacity-0 transition-opacity from-white via-white to-white/0 flex items-center justify-center',
+            'h-full hidden absolute pointer-events-none pl-4 pr-12 z-10 bg-gradient-to-r opacity-0 transition-opacity from-white via-white to-white/0 md:flex items-center justify-center',
             {
               ['opacity-100']: showLeft,
             }
@@ -68,7 +68,7 @@ export default function FiltersList() {
         </div>
 
         <div
-          className='flex relative w-full gap-4 grow lg:gap-8 overflow-hidden px-4'
+          className='flex relative w-full gap-4 grow lg:gap-8 overflow-auto md:overflow-hidden px-4'
           ref={filtersElementRef}
         >
           {filtersCategories.map((category) => {
@@ -95,7 +95,7 @@ export default function FiltersList() {
 
         <div
           className={cn(
-            'h-full absolute right-0 pointer-events-none pr-4 pl-12 z-10 bg-gradient-to-l from-white via-white to-white/0 flex items-center opacity-0 transition-opacity justify-center',
+            'h-full hidden absolute right-0 pointer-events-none pr-4 pl-12 z-10 bg-gradient-to-l from-white via-white to-white/0 md:flex items-center opacity-0 transition-opacity justify-center',
             {
               ['opacity-100']: showRight,
             }
@@ -121,7 +121,7 @@ export default function FiltersList() {
         </div>
       </div>
 
-      <button className='gap-2 p-4 grow rounded-xl border border-secondary flex items-center text-neutral-800 text-xs font-semibold'>
+      <button className='gap-2 hidden p-4 grow rounded-xl border border-secondary md:flex items-center text-neutral-800 text-xs font-semibold'>
         <Filter className='fill-neutral-800 w-3 h-3' />
         Filters
       </button>
