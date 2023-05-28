@@ -5,9 +5,6 @@ export default function Like(props: React.SVGProps<SVGSVGElement>) {
       aria-hidden='true'
       style={{
         display: 'block',
-        fill: 'rgba(0,0,0,.5)',
-        height: 24,
-        width: 24,
         strokeWidth: 2,
         overflow: 'visible',
       }}
