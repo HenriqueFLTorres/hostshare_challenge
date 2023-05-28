@@ -1,11 +1,11 @@
 'use client';
 import { PropertyFilterAtom } from '@/atoms/PropertyFilter';
 import Arrow from '@/icons/Arrow';
-import Filter from '@/icons/Filter';
 import { cn } from '@/utils/classNames';
 import { useAtom } from 'jotai';
 import Image from 'next/image';
 import { cache, use, useEffect, useRef, useState } from 'react';
+import FilterModal from './FilterModal';
 
 const getData = cache(async () => {
   const data = await fetch(
@@ -101,7 +101,9 @@ export default function FiltersList() {
                   'flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3',
                   { ['opacity-100']: category === type }
                 )}
-                onClick={() => setFilter(prev => ({ ...prev, category: type }))}
+                onClick={() =>
+                  setFilter((prev) => ({ ...prev, category: type }))
+                }
               >
                 <Image
                   src={`/filters/${type}.jpeg`}
@@ -150,10 +152,7 @@ export default function FiltersList() {
         </div>
       </div>
 
-      <button className='gap-2 hidden p-4 grow rounded-xl border border-secondary md:flex items-center text-neutral-800 text-xs font-semibold'>
-        <Filter className='fill-neutral-800 w-3 h-3' />
-        Filters
-      </button>
+      <FilterModal />
     </section>
   );
 }
