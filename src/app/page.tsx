@@ -1,4 +1,5 @@
 import FiltersList from '@/components/FiltersList';
+import PropertyList from '@/components/PropertyList';
 import Filter from '@/icons/Filter';
 import Globe from '@/icons/Globe';
 import Hamburguer from '@/icons/Hamburguer';
@@ -75,6 +76,8 @@ export default function Home() {
       </header>
 
       <FiltersList />
+
+      <PropertyList />
     </main>
   );
 }

@@ -41,8 +41,7 @@ export default function FiltersList() {
   };
 
   useEffect(() => {
-    if (!filtersElementRef.current) return;
-    filtersElementRef.current.addEventListener('scroll', handleScroll, {
+    filtersElementRef?.current?.addEventListener('scroll', handleScroll, {
       passive: true,
     });
 
@@ -99,11 +98,9 @@ export default function FiltersList() {
                 key={id}
                 className={cn(
                   'flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3',
-                  { ['opacity-100']: category === type }
+                  { ['opacity-100']: category === id }
                 )}
-                onClick={() =>
-                  setFilter((prev) => ({ ...prev, category: type }))
-                }
+                onClick={() => setFilter((prev) => ({ ...prev, category: id }))}
               >
                 <Image
                   src={`/filters/${type}.jpeg`}
@@ -114,7 +111,7 @@ export default function FiltersList() {
                 <p
                   className={cn(
                     "text-xs capitalize after:hidden group-hover:after:block after:absolute relative flex flex-col after:translate-y-6 after:content-[''] after:w-full after:bg-neutral-300 after:h-[2px] text-black shrink-0 font-semibold after:transition-colors",
-                    { ['after:block after:bg-black']: category === type }
+                    { ['after:block after:bg-black']: category === id }
                   )}
                 >
                   {title}
