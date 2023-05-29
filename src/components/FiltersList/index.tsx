@@ -1,15 +1,15 @@
 'use client';
-import { getCategories } from '@/api/getData';
 import { PropertyFilterAtom } from '@/atoms/PropertyFilter';
 import Arrow from '@/icons/Arrow';
 import { cn } from '@/utils/classNames';
 import { useAtom } from 'jotai';
-import Image from 'next/image';
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FilterModal from './FilterModal';
+import Image from 'next/image';
+import json from '../../api/data.json';
 
 export default function FiltersList() {
-  const categories = use(getCategories());
+  const categories = (json as any)?.categories;
   const [{ category }, setFilter] = useAtom(PropertyFilterAtom);
 
   const [{ showLeft, showRight }, setShowScroll] = useState({
@@ -33,7 +33,7 @@ export default function FiltersList() {
   };
 
   useEffect(() => {
-    if (!filtersElementRef.current) return
+    if (!filtersElementRef.current) return;
     filtersElementRef?.current?.addEventListener('scroll', handleScroll, {
       passive: true,
     });
@@ -55,7 +55,7 @@ export default function FiltersList() {
           )}
         >
           <button
-            aria-label="Scroll left"
+            aria-label='Scroll left'
             onClick={() =>
               filtersElementRef.current?.scroll({
                 left:
@@ -125,7 +125,7 @@ export default function FiltersList() {
           )}
         >
           <button
-          aria-label="Scroll right"
+            aria-label='Scroll right'
             onClick={() =>
               filtersElementRef.current?.scroll({
                 left:

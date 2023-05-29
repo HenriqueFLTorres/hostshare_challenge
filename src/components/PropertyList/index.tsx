@@ -1,5 +1,4 @@
 'use client';
-import { getProperties } from '@/api/getData';
 import { PropertyFilterAtom } from '@/atoms/PropertyFilter';
 import Arrow from '@/icons/Arrow';
 import Like from '@/icons/Like';
@@ -8,10 +7,11 @@ import { cn } from '@/utils/classNames';
 import { useAtom } from 'jotai';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cache, use, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import json from '../../api/data.json';
 
 export default function PropertyList() {
-  const data = use(getProperties());
+  const data = (json as any)?.data?.slice(0, 30);
   const [{ category }] = useAtom(PropertyFilterAtom);
 
   const filteredData = useMemo(
@@ -30,7 +30,10 @@ export default function PropertyList() {
 
 function PropertyCard({ info }: { info: any }) {
   return (
-    <Link href={`rooms/${info.id}`} className='flex group lg:max-w-[18.5rem] flex-col'>
+    <Link
+      href={`rooms/${info.id}`}
+      className='flex group lg:max-w-[18.5rem] flex-col'
+    >
       <ImageCarrousel images={info.images.data?.slice(0, 5)} />
 
       <div className='flex flex-col mt-2 text-neutral-500 text-sm font-normal'>
@@ -85,7 +88,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
       </div>
       <Like className='w-4 h-4 absolute right-4 top-3 shadow-sm stroke-white' />
       <button
-      aria-label='Previous image'
+        aria-label='Previous image'
         onClick={() => setSelectedImage((prev) => (prev === 0 ? 0 : prev - 1))}
         className={cn(
           'w-8 absolute rounded-full left-3 top-1/2 -translate-y-1/2 h-8 bg-white opacity-0 group-hover:opacity-80 hover:opacity-100 transition-[opacity,_transform] hover:scale-105 flex items-center justify-center shadow-md',
@@ -98,7 +101,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
         <Arrow className='w-3 h-3' />
       </button>
       <button
-      aria-label='Next image'
+        aria-label='Next image'
         onClick={() => setSelectedImage((prev) => (prev === 4 ? 4 : prev + 1))}
         className={cn(
           'w-8 absolute rounded-full right-3 top-1/2 -translate-y-1/2 h-8 bg-white opacity-0 group-hover:opacity-80 hover:opacity-100 transition-[opacity,_transform] hover:scale-105 flex items-center justify-center shadow-md',

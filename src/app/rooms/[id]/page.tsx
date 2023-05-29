@@ -1,5 +1,4 @@
 'use client';
-import { getUniqueProperty } from '@/api/getData';
 import RoomHeader from '@/components/Global/RoomHeader';
 import PropertyPageDescription from '@/components/PropertyPage/Description';
 import PropertyPageReserve from '@/components/PropertyPage/Reserve';
@@ -7,12 +6,12 @@ import PropertyPageTopSection from '@/components/PropertyPage/TopSection';
 import Star from '@/icons/Star';
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
-import { use } from 'react';
+import json from '../../../api/data.json';
 
 const reviewsCount = faker.datatype.number(400);
 
 export default function Home({ params }: { params: { id: string } }) {
-  const data = use(getUniqueProperty(params.id));
+  const data = (json as any)?.data?.find((d: any) => d.info.id === params.id);
 
   const images = data.info.images.data?.slice(0, 5);
   const {
