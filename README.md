@@ -22,4 +22,4 @@ pnpm dev
 - RadixUI (Flexible library focused on accessibility)
 - Jotai (Small help for managing filters)
 
-
+[Preview](https://hostshare-challenge.vercel.app/)
