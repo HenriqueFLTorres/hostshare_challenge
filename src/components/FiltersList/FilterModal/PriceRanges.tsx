@@ -24,7 +24,7 @@ export default function FilterModalPriceRanges() {
     <section className='flex flex-col py-8 px-6'>
       <h3 className='text-xl text-neutral-800 font-semibold'>Price range</h3>
 
-      <div className='flex flex-col px-6'>
+      <div className='flex flex-col lg:px-6'>
         <div className='flex items-end justify-end translate-y-2.5 gap-1'>
           {fakeSliderValues.map((v, i) => (
             <div

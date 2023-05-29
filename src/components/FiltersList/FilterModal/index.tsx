@@ -54,7 +54,7 @@ export default function FilterModal() {
                 Property type
               </h3>
 
-              <div className='grid grid-cols-4 gap-4'>
+              <div className='flex flex-col lg:grid grid-cols-4 gap-4'>
                 {propertyTypeList.map((type) => (
                   <button
                     key={type}
@@ -85,7 +85,7 @@ export default function FilterModal() {
               </h3>
 
               <div className='flex flex-col'>
-                <div className='py-3 flex justify-between items-center pr-1'>
+                <div className='py-3 flex gap-2 justify-between items-center pr-1'>
                   <div className='flex flex-col font-normal text-left gap-1'>
                     <h4 className='text-base text-neutral-800'>Instant Book</h4>
                     <p className='text-sm text-neutral-500'>
@@ -95,7 +95,7 @@ export default function FilterModal() {
                   <Switch />
                 </div>
 
-                <div className='py-3 flex justify-between items-center pr-1'>
+                <div className='py-3 flex gap-2 justify-between items-center pr-1'>
                   <div className='flex flex-col font-normal text-left gap-1'>
                     <h4 className='text-base text-neutral-800'>
                       Self check-in
@@ -130,7 +130,7 @@ function RangeInput({ label }: { label: string }) {
       <p className='text-base text-neutral-800'>{label}</p>
 
       <ToggleGroup.Root
-        className='inline-flex gap-2.5'
+        className='inline-flex gap-2.5 overflow-hidden'
         type='single'
         defaultValue={'0'}
         aria-label={label}

@@ -28,7 +28,7 @@ export default function PropertyList() {
   );
 
   return (
-    <ul className='grid px-10 py-6 lg:px-20 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-x-6 gap-y-10 auto-rows-[minmax(min-content_max-content)] grid-flow-dense'>
+    <ul className='grid px-4 md:px-10 py-6 lg:px-20 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-x-6 gap-y-10 auto-rows-[minmax(min-content_max-content)] grid-flow-dense'>
       {filteredData.map((data: any) => (
         <PropertyCard key={data.info.id} info={data.info} />
       ))}
@@ -38,7 +38,7 @@ export default function PropertyList() {
 
 function PropertyCard({ info }: { info: any }) {
   return (
-    <Link href={`rooms/${info.id}`} className='flex group max-w-[18.5rem] flex-col'>
+    <Link href={`rooms/${info.id}`} className='flex group lg:max-w-[18.5rem] flex-col'>
       <ImageCarrousel images={info.images.data?.slice(0, 5)} />
 
       <div className='flex flex-col mt-2 text-neutral-500 text-sm font-normal'>

@@ -4,13 +4,14 @@ import Hamburguer from '@/icons/Hamburguer';
 import SearchBasic from '@/icons/Search';
 import UserProfile from '@/icons/UserProfile';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   return (
     <>
       <header className='hidden md:flex px-10 2xl:px-20 py-4 border-y border-secondary w-full'>
         <div className='flex items-center justify-between w-full max-w-[160rem]'>
-          <div className='block items-center lg:grow lg:shrink-0 lg:basis-52'>
+          <Link href={"/"} className='block items-center lg:grow lg:shrink-0 lg:basis-52'>
             <Image
               src={'/brand/logo-simple.png'}
               alt='HostShare Logo'
@@ -25,7 +26,7 @@ export default function Header() {
               height={32}
               className='hidden xl:block'
             />
-          </div>
+          </Link>
 
           <div className='block px-6 basis-auto grow-0 shrink'>
             <div className='flex text-sm divide-x w-max divide-secondary font-semibold [&>button]:px-4 text-neutral-800 p-2 items-center rounded-full bg-white shadow-md hover:shadow-black/20 transition-shadow border border-secondary'>

@@ -7,8 +7,8 @@ export default function FilterModalTypeSelector() {
   const [{ type }, setFilter] = useAtom(PropertyFilterAtom);
 
   return (
-    <div className='grid grid-cols-2 items-center'>
-      <div className='flex flex-col p-6 pr-0'>
+    <div className='flex flex-col lg:grid grid-cols-2 items-center'>
+      <div className='flex flex-col p-6 lg:pr-0'>
         <h3 className='text-xl text-neutral-800 font-semibold'>
           Type of place
         </h3>
@@ -25,7 +25,7 @@ export default function FilterModalTypeSelector() {
               key={type}
               value={type}
               aria-label={label}
-              className='first:rounded-l-xl group flex flex-col text-center justify-center items-center last:rounded-r-xl px-2 py-4 min-w-[7rem] border border-secondary hover:border-neutral-800 data-[state=on]:border-neutral-800 data-[state=on]:bg-neutral-800 data-[state=on]:shadow-[inset_0_2px_8px_#000] data-[state=on]:bg-[linear-gradient(to_bottom,rgba(255_255_255/0.16),rgba(255_255_255/0))]'
+              className='first:rounded-l-xl group flex flex-col grow text-center justify-center items-center last:rounded-r-xl px-2 py-4 md:min-w-[7rem] border border-secondary hover:border-neutral-800 data-[state=on]:border-neutral-800 data-[state=on]:bg-neutral-800 data-[state=on]:shadow-[inset_0_2px_8px_#000] data-[state=on]:bg-[linear-gradient(to_bottom,rgba(255_255_255/0.16),rgba(255_255_255/0))]'
             >
               <span className='group-data-[state=on]:text-white text-sm font-medium text-neutral-800'>
                 {label}

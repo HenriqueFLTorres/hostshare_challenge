@@ -12,7 +12,7 @@ export default function FilterModalAmenities() {
         Essentials
       </h4>
 
-      <ul className='grid grid-cols-2 gap-6'>
+      <ul className='flex flex-col lg:grid grid-cols-2 gap-6'>
         {amenities.essentials.map((type) => (
           <Checkbox key={type} label={type} />
         ))}
