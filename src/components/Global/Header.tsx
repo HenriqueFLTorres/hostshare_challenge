@@ -29,7 +29,7 @@ export default function Header() {
           </Link>
 
           <div className='block px-6 basis-auto grow-0 shrink'>
-            <button aria-label='Search' className='flex text-sm divide-x w-max divide-secondary font-semibold [&>button]:px-4 text-neutral-800 p-2 items-center rounded-full bg-white shadow-md hover:shadow-black/20 transition-shadow border border-secondary'>
+            <button aria-label='Search' className='flex text-sm divide-x w-max divide-secondary font-semibold [&>p]:px-4 text-neutral-800 p-2 items-center rounded-full bg-white shadow-md hover:shadow-black/20 transition-shadow border border-secondary'>
               <p>Anywhere</p>
               <p>Any week</p>
               <p className='font-normal text-neutral-500'>
