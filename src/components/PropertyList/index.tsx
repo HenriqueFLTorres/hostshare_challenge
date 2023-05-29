@@ -63,7 +63,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
   return (
     <div className='aspect-square relative rounded-xl overflow-hidden'>
       <div
-        className='flex flex-row w-full h-full transition-transform duration-500'
+        className='flex flex-row relative w-full h-full transition-transform duration-500'
         style={{
           transform: `translateX(-${selectedImage * 100}%)`,
         }}
@@ -76,6 +76,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
             fill
             className='object-cover'
             sizes='(max-width: 768px) 400px, (max-width: 1200px) 300px, 330px'
+            priority={index === 0}
             style={{
               transform: `translateX(${index * 100}%)`,
             }}
