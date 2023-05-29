@@ -57,6 +57,7 @@ export default function FilterModal() {
               <div className='flex flex-col lg:grid grid-cols-4 gap-4'>
                 {propertyTypeList.map((type) => (
                   <button
+                    aria-label={type}
                     key={type}
                     className='border capitalize text-left gap-6 flex flex-col text-base font-semibold text-neutral-800 rounded-lg border-secondary p-4 hover:border-neutral-800 transition-colors'
                   >
@@ -110,11 +111,11 @@ export default function FilterModal() {
             </section>
           </div>
           <footer className='flex border-t border-secondary shrink-0 items-center justify-between px-6 py-4'>
-            <button className='underline text-neutral-800 text-base font-semibold p-2.5 hover:bg-neutral-200 rounded-lg transition-colors'>
+            <button aria-label='Clear all' className='underline text-neutral-800 text-base font-semibold p-2.5 hover:bg-neutral-200 rounded-lg transition-colors'>
               Clear all
             </button>
 
-            <button className='bg-neutral-800 hover:bg-black transition-colors font-semibold text-sm rounded-lg px-6 py-4 text-white'>
+            <button aria-label='Show places' className='bg-neutral-800 hover:bg-black transition-colors font-semibold text-sm rounded-lg px-6 py-4 text-white'>
               Show places
             </button>
           </footer>

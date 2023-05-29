@@ -33,6 +33,7 @@ export default function FilterModalAmenities() {
       )}
 
       <button
+      aria-label={showMore ? 'Show less' : 'Show more'}
         onClick={() => setShowMore((prev) => !prev)}
         className='text-base w-max py-3 text-neutral-800 underline font-semibold'
       >

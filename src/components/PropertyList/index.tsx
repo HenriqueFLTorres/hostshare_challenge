@@ -20,11 +20,11 @@ export default function PropertyList() {
   );
 
   return (
-    <ul className='grid px-4 md:px-10 py-6 lg:px-20 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-x-6 gap-y-10 auto-rows-[minmax(min-content_max-content)] grid-flow-dense'>
+    <section className='grid px-4 md:px-10 py-6 lg:px-20 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-x-6 gap-y-10 auto-rows-[minmax(min-content_max-content)] grid-flow-dense'>
       {filteredData?.map((data: any) => (
         <PropertyCard key={data.info.id} info={data.info} />
       ))}
-    </ul>
+    </section>
   );
 }
 
@@ -85,6 +85,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
       </div>
       <Like className='w-4 h-4 absolute right-4 top-3 shadow-sm stroke-white' />
       <button
+      aria-label='Previous image'
         onClick={() => setSelectedImage((prev) => (prev === 0 ? 0 : prev - 1))}
         className={cn(
           'w-8 absolute rounded-full left-3 top-1/2 -translate-y-1/2 h-8 bg-white opacity-0 group-hover:opacity-80 hover:opacity-100 transition-[opacity,_transform] hover:scale-105 flex items-center justify-center shadow-md',
@@ -97,6 +98,7 @@ function ImageCarrousel({ images }: { images: any[] }) {
         <Arrow className='w-3 h-3' />
       </button>
       <button
+      aria-label='Next image'
         onClick={() => setSelectedImage((prev) => (prev === 4 ? 4 : prev + 1))}
         className={cn(
           'w-8 absolute rounded-full right-3 top-1/2 -translate-y-1/2 h-8 bg-white opacity-0 group-hover:opacity-80 hover:opacity-100 transition-[opacity,_transform] hover:scale-105 flex items-center justify-center shadow-md',

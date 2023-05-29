@@ -25,7 +25,7 @@ export default function PropertyPageReserve({
               {ratings.guestSatisfactionOverall}
             </span>{' '}
             ·{' '}
-            <button className='underline text-neutral-500'>
+            <button aria-label='See detailed reviews' className='underline text-neutral-500'>
               {reviewsCount} reviews
             </button>
           </div>
@@ -51,7 +51,7 @@ export default function PropertyPageReserve({
           </div>
         </div>
 
-        <button className='text-white rounded-lg justify-center bg-[radial-gradient(circle_at_center,#FF385C_0%,#E61E4D_27.5%,#E31C5F_40%,#D70466_57.5%,#BD1E59_75%,#BD1E59_100%)] font-semibold text-base py-4 items-center flex'>
+        <button aria-label='Reserve' className='text-white rounded-lg justify-center bg-[radial-gradient(circle_at_center,#FF385C_0%,#E61E4D_27.5%,#E31C5F_40%,#D70466_57.5%,#BD1E59_75%,#BD1E59_100%)] font-semibold text-base py-4 items-center flex'>
           Reserve
         </button>
 
@@ -60,7 +60,7 @@ export default function PropertyPageReserve({
         </p>
       </div>
 
-      <button className='flex gap-2 items-center text-neutral-600 underline text-sm font-normal mt-6'>
+      <button aria-label='Report listing' className='flex gap-2 items-center text-neutral-600 underline text-sm font-normal mt-6'>
         <Report className='w-4 h-4 fill-neutral-500' />
         Report this listing
       </button>

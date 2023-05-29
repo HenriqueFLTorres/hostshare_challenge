@@ -21,21 +21,21 @@ export default function PropertyPageTopSection({
             <Star className='w-4 h-4 fill-black' />
             {ratings.guestSatisfactionOverall}
           </span>
-          · <button className='underline'>{reviewsCount} reviews</button> ·{' '}
+          · <button aria-label='See detailed reviews' className='underline'>{reviewsCount} reviews</button> ·{' '}
           {host.isSuperhost && (
             <p className='text-sm font-light'> Superhost ·</p>
           )}
-          <button className='flex underline'>
+          <button aria-label='See detailed location' className='flex underline'>
             {location.city}, {location.country.title}
           </button>
         </div>
 
         <div className='flex items-center gap-1'>
-          <button className='p-2 hover:bg-neutral-100 underline transition-colors flex items-center gap-2 rounded-lg'>
+          <button aria-label='Share room' className='p-2 hover:bg-neutral-100 underline transition-colors flex items-center gap-2 rounded-lg'>
             <Download className='w-4 h-4 fill-neutral-800' />
             Share
           </button>
-          <button className='p-2 transition-colors underline flex items-center gap-2 hover:bg-neutral-100 rounded-lg'>
+          <button aria-label='Save room' className='p-2 transition-colors underline flex items-center gap-2 hover:bg-neutral-100 rounded-lg'>
             <Like className='w-4 h-4 fill-transparent stroke-1 stroke-neutral-800' />
             Save
           </button>

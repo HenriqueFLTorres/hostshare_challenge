@@ -55,6 +55,7 @@ export default function FiltersList() {
           )}
         >
           <button
+            aria-label="Scroll left"
             onClick={() =>
               filtersElementRef.current?.scroll({
                 left:
@@ -89,6 +90,7 @@ export default function FiltersList() {
             }) => (
               <button
                 key={id}
+                aria-label={title}
                 className={cn(
                   'flex shrink-0 group flex-col gap-2 opacity-60 hover:opacity-100 motion-safe:transition-opacity items-center pt-4 pb-3',
                   { ['opacity-100']: category === id }
@@ -123,6 +125,7 @@ export default function FiltersList() {
           )}
         >
           <button
+          aria-label="Scroll right"
             onClick={() =>
               filtersElementRef.current?.scroll({
                 left:

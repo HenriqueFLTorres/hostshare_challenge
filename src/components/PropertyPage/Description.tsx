@@ -15,7 +15,7 @@ export default function PropertyPageDescription({ description }: any) {
 
       <Modal
         trigger={
-          <button className='underline font-medium flex justify-start items-center gap-1'>
+          <button aria-label='Show more' className='underline font-medium flex justify-start items-center gap-1'>
             Show more <Arrow className='rotate-180 !stroke-[3px]' />
           </button>
         }
