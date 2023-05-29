@@ -30,13 +30,13 @@ export default function PropertyList() {
 
 function PropertyCard({ info }: { info: any }) {
   return (
-    <Link
-      href={`rooms/${info.id}`}
-      className='flex group lg:max-w-[18.5rem] flex-col'
-    >
+    <div className='flex group lg:max-w-[18.5rem] flex-col'>
       <ImageCarrousel images={info.images.data?.slice(0, 5)} />
 
-      <div className='flex flex-col mt-2 text-neutral-500 text-sm font-normal'>
+      <Link
+        href={`rooms/${info.id}`}
+        className='flex flex-col mt-2 text-neutral-500 text-sm font-normal'
+      >
         <header className='flex justify-between flex-wrap'>
           <h2 className='font-semibold text-sm text-neutral-800'>
             {info.title}
@@ -55,8 +55,8 @@ function PropertyCard({ info }: { info: any }) {
           </b>{' '}
           night
         </p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
