@@ -1,4 +1,5 @@
 'use client';
+import { getProperties } from '@/api/getData';
 import { PropertyFilterAtom } from '@/atoms/PropertyFilter';
 import Arrow from '@/icons/Arrow';
 import Like from '@/icons/Like';
@@ -9,17 +10,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cache, use, useMemo, useState } from 'react';
 
-const getData = cache(async () => {
-  const data = await fetch(
-    'https://file.notion.so/f/s/24643894-e5c3-4c40-974a-52594f581e03/listings.json?id=f795dab6-14d4-48a9-9567-c72151d311a2&table=block&spaceId=f2ea7328-64a4-4f18-bacc-df6c9ac3d888&expirationTimestamp=1685308258589&signature=Uwu9OZixsV6q4lIkM4RGdWT86gzpBQodVmzhbPzzAMM&downloadName=listings.json'
-  );
-  const notionApi = await data.json();
-
-  return notionApi?.data;
-});
-
 export default function PropertyList() {
-  const data = use(getData());
+  const data = use(getProperties());
   const [{ category }] = useAtom(PropertyFilterAtom);
 
   const filteredData = useMemo(
@@ -29,7 +21,7 @@ export default function PropertyList() {
 
   return (
     <ul className='grid px-4 md:px-10 py-6 lg:px-20 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-x-6 gap-y-10 auto-rows-[minmax(min-content_max-content)] grid-flow-dense'>
-      {filteredData.map((data: any) => (
+      {filteredData?.map((data: any) => (
         <PropertyCard key={data.info.id} info={data.info} />
       ))}
     </ul>

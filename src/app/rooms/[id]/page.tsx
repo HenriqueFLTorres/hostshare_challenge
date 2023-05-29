@@ -1,4 +1,5 @@
 'use client';
+import { getUniqueProperty } from '@/api/getData';
 import RoomHeader from '@/components/Global/RoomHeader';
 import PropertyPageDescription from '@/components/PropertyPage/Description';
 import PropertyPageReserve from '@/components/PropertyPage/Reserve';
@@ -6,21 +7,12 @@ import PropertyPageTopSection from '@/components/PropertyPage/TopSection';
 import Star from '@/icons/Star';
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
-import { cache, use } from 'react';
-
-const getData = cache(async (id: string) => {
-  const data = await fetch(
-    'https://file.notion.so/f/s/24643894-e5c3-4c40-974a-52594f581e03/listings.json?id=f795dab6-14d4-48a9-9567-c72151d311a2&table=block&spaceId=f2ea7328-64a4-4f18-bacc-df6c9ac3d888&expirationTimestamp=1685308258589&signature=Uwu9OZixsV6q4lIkM4RGdWT86gzpBQodVmzhbPzzAMM&downloadName=listings.json'
-  );
-  const notionApi = await data.json();
-
-  return notionApi?.data?.find((d: any) => d.info.id === id);
-});
+import { use } from 'react';
 
 const reviewsCount = faker.datatype.number(400);
 
 export default function Home({ params }: { params: { id: string } }) {
-  const data = use(getData(params.id));
+  const data = use(getUniqueProperty(params.id));
 
   const images = data.info.images.data?.slice(0, 5);
   const {
