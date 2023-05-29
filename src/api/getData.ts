@@ -2,8 +2,8 @@ import { cache } from 'react';
 import data from './data.json';
 
 type dataFile = {
-    data: unknown[],
-    categories: unknown[]
+    data: any[],
+    categories: any[]
 }
 
 export const getProperties = cache(async () => {
